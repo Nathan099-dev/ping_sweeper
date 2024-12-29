@@ -3,6 +3,7 @@ import platform
 import ipaddress
 from datetime import datetime
 from colorama import Fore, init
+import sys
 
 
 init()
@@ -15,7 +16,8 @@ def ping_sweep(network):
         net = ipaddress.ip_network(network, strict=False)
         param = '-n' if platform.system().lower() == 'windows' else '-c'
 
-        print('Iniciando ping sweep em: ' + str(datetime.now()))
+        start = datetime.now()
+        print('Iniciando ping sweep em: ' + str(start))
 
         for ip in net.hosts():
             ip_str = str(ip)
@@ -25,19 +27,20 @@ def ping_sweep(network):
             if resuts.returncode == 0:
                 print(f' {GREEN} host {ip_str} ativo')
             else:
-                  print(f' {RED} host {ip_str} inativo')
-                 
-               
+                  print(f' {RED} host {ip_str} inativo')                   
+            
+       
 
     except ValueError as e:
-        pass
+        print(f'Erro de valor {e}')
+        sys.exit()
 
     except KeyboardInterrupt:
         print(f'{GRAY} Atalho CTRL + C Pressionado... Interrompendo programa')
+        sys.exit()
 
 if __name__ == "__main__":
-        network = str(input('Digite o ip da sua rede:'))      
-
+        network = str(input('Digite o ip da sua rede:'))
 ping_sweep(network)
 
 
