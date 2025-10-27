@@ -27,7 +27,7 @@ def ping_sweep(network):
             if resuts.returncode == 0:
                 print(f' {GREEN} host {ip_str} ativo')
             else:
-                  print(f' {RED} host {ip_str} inativo')                   
+                  pass
             
        
 
