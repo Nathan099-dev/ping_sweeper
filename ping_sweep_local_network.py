@@ -29,8 +29,8 @@ def ping_sweep(network):
             else:
                 print(f' {RED} host {ip_str} inativo')
                   
+            end = datetime.now()
             
-       
 
     except ValueError as e:
         print(f'Erro de valor {e}')
