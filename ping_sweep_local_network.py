@@ -5,7 +5,6 @@ from datetime import datetime
 from colorama import Fore, init
 import sys
 
-
 init()
 GREEN = Fore.GREEN
 RED = Fore.RED
