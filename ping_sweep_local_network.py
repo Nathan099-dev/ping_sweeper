@@ -2,13 +2,8 @@ import subprocess
 import platform
 import ipaddress
 from datetime import datetime
-from colorama import Fore, init
 import sys
 
-init()
-GREEN = Fore.GREEN
-RED = Fore.RED
-GRAY = Fore.LIGHTBLACK_EX
 
 def ping_sweep(network):
     try:
@@ -24,9 +19,9 @@ def ping_sweep(network):
             resuts = subprocess.run(['ping', param, '1', ip_str], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             
             if resuts.returncode == 0:
-                print(f' {GREEN} host {ip_str} ativo')
+                print(f' host {ip_str} ativo')
             else:
-                print(f' {RED} host {ip_str} inativo')
+                print(f' host {ip_str} inativo')
                   
             end = datetime.now()
             
@@ -36,7 +31,7 @@ def ping_sweep(network):
         sys.exit()
 
     except KeyboardInterrupt:
-        print(f'{GRAY} Atalho CTRL + C Pressionado... Interrompendo programa')
+        print(f' Atalho CTRL + C Pressionado... Interrompendo programa')
         sys.exit()
 
 if __name__ == "__main__":
